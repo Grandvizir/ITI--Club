@@ -1,4 +1,4 @@
-<a href="/"><img src= "/img/logo.png" height="65%" width="65%"/></a>
+<a href="/"><img src= "/img/pi_logo.png" height="65%" width="65%"/></a>
 <br>
 <br>
 

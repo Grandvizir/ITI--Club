@@ -6,7 +6,7 @@
   js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=212454332171704";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<a href="/"><img src= "/img/logo.png" height="65%" width="65%"/></a>
+<a href="/"><img src= "/img/pi_logo.png" height="65%" width="65%"/></a>
 <br>
 <br>
 

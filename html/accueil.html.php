@@ -14,7 +14,7 @@
 	border-radius: 4px;
 }
 .bs-docs-candidat::after {
-content: "Bienvenue !";
+content: "Home";
 position: absolute;
 top: -1px;
 left: -1px;
