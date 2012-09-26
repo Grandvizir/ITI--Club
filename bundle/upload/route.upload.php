@@ -3,9 +3,10 @@
 if(!empty($_GET['page']) && $_GET['page'] == "concours")
 {
 	//route !
-		$path = "html/no-evenement.html.php";
+		$path = "html/home.html.php";
 		if(!empty($_GET['action']))
 		{
+			die;
 			switch ($_GET['action']) {
 				case "upload":
 					$path = "html/upload.html.php";
@@ -17,9 +18,14 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 					;
 			}
 		}
-	if(!empty($_FILE))
+
+	if(!empty($_FILES['upld']))
 	{
-		var_dump($_FILE);
+		var_dump($_FILES['upld']);
+		echo basename($_FILES['upld']['name']);
+		//move_uploaded_file($path, $destination);
+		die;
 	}
+
 }
 ?>

@@ -10,7 +10,7 @@ include("route.upload.php");
 
 <ul class="breadcrumb">
   <li><a href="/">Home</a> <span class="divider">/</span></li>
-  <li>Evenement<span class="divider"></span></li>
+  <li>Concours<span class="divider"></span></li>
 </ul>
-<p>Nos evenements !</p>
+<p>Notre concours !</p>
 	<?php 	include($path); ?>

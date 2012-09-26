@@ -21,6 +21,11 @@ RewriteRule @/administration/token/([a-z-A-Z0-9\-]+) index.php?page=administrati
 #FIN
 
 
+#UPLOAD
+RewriteRule @/concours/action/([a-z-A-Z0-9\-]+) index.php?page=concours&action=$1 [L]
+#fin
+
+#PATTERN
 RewriteRule @/([a-z-A-Z0-9\-]+) index.php?page=$1 [L]
 RewriteRule pop/([a-z-A-Z0-9\-]+) index.php?pop=$1 [L]
-
+#FIN
