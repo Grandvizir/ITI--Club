@@ -1,43 +1,37 @@
 <?php
+require_once("file.class.php");
+require_once("file.repository.php");
 
-namespace Upload
+class ControllerUpload extends Upload
 {
-	class ControllerUpload extends File
+	public function isSecureUpload(array $file)
+	{
+		//secure Extension is_array + type MIME
+		$extension = strtolower(strrchr($file['name'],'.'));
+
+		$file = new Upload($file, $_SESSION['userId']);
+		if(in_array($extension, $file->getExtension())){
+			return 1;
+		}
+		else
+		 return 0;
+	}
+
+	public function flushUpload(array $file)
 	{
 
+		$path = "bundle/upload/ressource/".$file['name'];
+		$file['path'] = $path;
+		$newFile = new Upload($file, $_SESSION['userId']);
+		FileRepository::flushUpload($newFile);
 
-		public function isSecureUpload(array $file)
+
+		if(move_uploaded_file($file['tmp_name'], $path))
 		{
-			$extension=strrchr($file['name'],'.');
-			echo $extension;
-			die;
-
-
-			/**
-			*
-	*	// secure Extension is_array + type MIME
-
-	var_dump($_FILES['upld']);
-	$path = "bundle/upload/ressource/".$_FILES['upld']['name'];
-
-	//instance FILE + FLUSH (save destination bdd)
-
-	move_uploaded_file($_FILES['upld']['tmp_name'], $path);
-			**/
-
-			//if()
+			return 1;
 		}
-
-		public function getExtension(){
-			return $this->extension;
-		}
-
-		public function setExtension(array $array){
-			if(is_array($array)){
-				$this->extension = $array;
-			}
-		}
+		else
+			return 0;
 	}
 }
-
 ?>
