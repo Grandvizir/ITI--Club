@@ -1,17 +1,20 @@
 <?php
 
-class File
+namespace Upload
 {
-	private $id;
+	class File
+	{
+		private $id;
+		private $extension = array("jpg","jpeg","png");
 
-	function getId(){
-		return $this->id;
-	}
+		function getId(){
+			return $this->id;
+		}
 
-	function setId($id){
-		$this->id = $id;
+		function setId($id){
+			$this->id = $id;
+		}
 	}
 }
-
 
 ?>

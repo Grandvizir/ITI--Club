@@ -20,11 +20,19 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 
 	if(!empty($_FILES['upld']))
 	{
-		var_dump($_FILES['upld']);
-		echo basename($_FILES['upld']['name']);
-		//move_uploaded_file($path, $destination);
-		die;
+		if($_FILES['upld']['error'] === 0)
+		{
+			if(ControllerUpload::isSecureUpload($_FILES['upld']))
+			{
+				ControllerUpload::flush($_FILES['upld']);
+			}
+		}
+		else
+		{
+			die('error upload');
+		}
 	}
+
 
 }
 ?>

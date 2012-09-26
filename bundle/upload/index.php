@@ -2,8 +2,10 @@
 
 
 include( "file.class.php");
+include("controller.upload.php");
 include("file.repository.php");
 include("route.upload.php");
+
 ?>
 
 
