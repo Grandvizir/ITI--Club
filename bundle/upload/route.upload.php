@@ -6,7 +6,6 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 		$path = "html/home.html.php";
 		if(!empty($_GET['action']))
 		{
-			die;
 			switch ($_GET['action']) {
 				case "upload":
 					$path = "html/upload.html.php";
