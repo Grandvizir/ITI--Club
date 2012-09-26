@@ -7,8 +7,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <a href="/"><img src= "/img/pi_logo.png" height="65%" width="65%"/></a>
-<br>
-<br>
+
 
 
         <ul class="nav nav-list bs-docs-sidenav affix-top">

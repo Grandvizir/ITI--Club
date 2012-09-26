@@ -1,12 +1,12 @@
 <a href="/"><img src= "/img/pi_logo.png" height="65%" width="65%"/></a>
-<br>
-<br>
+
 
 
         <ul class="nav nav-list bs-docs-sidenav affix-top">
           <li class="<?php if($var == "bienvenue" || empty($var)) echo "active";?>"><a href="/@/bienvenue/"><i class="icon-chevron-right"></i>Bienvenue</a></li>
           <li class="<?php if($var == "forum") echo "active";?>"><a href="/@/forum/"><i class="icon-chevron-right"></i>Forum</a></li>
           <li class="<?php if($var == "evenement") echo "active";?>"><a href="/@/evenement/"><i class="icon-chevron-right"></i>Evenement</a></li>
+          <li class="<?php if($var == "concours") echo "active";?>"><a href="/@/concours/"><i class="icon-chevron-right"></i>Evenement</a></li>
           <li class="<?php if($var == "candidature") echo "active";?>"><a href="/@/candidature/"><i class="icon-chevron-right"></i>Candidature</a></li>
           <li class="dropdown-submenu"><a tabindex="-1" href="#"><i class="icon-chevron-right"></i>Mon compte</a>
 			<ul class="dropdown-menu">

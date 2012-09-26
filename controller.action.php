@@ -17,6 +17,9 @@ if(!empty($_SESSION) && !is_null($_SESSION))
 			case "forum":
 				$pathModule= "bundle/forum/index.php";
 				break;
+			case "concours":
+				$pathModule= "bundle/upload/index.php";
+				break;
 			case "evenement":
 				$pathModule= "bundle/event/index.php";
 				break;
