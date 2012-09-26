@@ -3,7 +3,7 @@
 
 include( "file.class.php");
 include("file.repository.php");
-include("route.file.php");
+include("route.upload.php");
 ?>
 
 

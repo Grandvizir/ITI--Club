@@ -17,5 +17,9 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 					;
 			}
 		}
+	if(!empty($_FILE))
+	{
+		var_dump($_FILE);
+	}
 }
 ?>
