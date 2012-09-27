@@ -1,16 +1,10 @@
 <?php
 
 require_once("class.event.php");
+require_once("/bundle/Reader/Reader.class.php");
 
-class EventRepository
+class EventRepository extends Reader
 {
-	private function getPdoConnexion()
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-		return $bdd;
-	}
-
-
 	public function getAllEvent()
 	{
 		$bdd = EventRepository::getPdoConnexion();

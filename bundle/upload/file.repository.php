@@ -1,18 +1,16 @@
 <?php
 
 require_once("file.class.php");
+require_once("/bundle/Reader/Reader.class.php");
 
-class FileRepository
+class FileRepository extends Reader
 {
-	private function getPdoConnexion()
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-		return $bdd;
-	}
+
 
 	public function flushUpload(Upload $file){
 
 		$bdd = FileRepository::getPdoConnexion();
+
 		$req = $bdd->prepare('INSERT INTO file(name, path, pathMin, timeUpload, userId) VALUES(:name, :path, :pathMin, :timeUpload, :userId)');
 		$req->execute(array(
 						'name' => $file->getName(),
@@ -25,6 +23,8 @@ class FileRepository
 
 	public function getAllMinInArray(){
 		$bdd = FileRepository::getPdoConnexion();
+
+
 		$reponse = $bdd->query('SELECT * FROM file');
 		$array = array();
 		if($reponse)

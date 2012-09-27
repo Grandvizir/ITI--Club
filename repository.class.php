@@ -1,14 +1,10 @@
 <?php
 
 require_once('User.class.php');
+require_once("/bundle/Reader/Reader.class.php");
 
-class UserRepository{
-
-	private function getPdoConnexion()
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-		return $bdd;
-	}
+class UserRepository extends Reader
+{
 
 	public function flushNewUser(User $user){
 

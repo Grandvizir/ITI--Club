@@ -1,6 +1,7 @@
 <?php
+require_once("/bundle/Reader/Reader.class.php");
 
-class Contact
+class Contact extends Reader
 {
   	private $id;
 	private $name;
@@ -10,11 +11,6 @@ class Contact
 	private $ip;
 	private $sendTime;
 	private $view;
-
-	private function getPdoConnexion(){
-		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-		return $bdd;
-	}
 
 	public function newContact(Contact $contact)
 	{
