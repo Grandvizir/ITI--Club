@@ -1,6 +1,7 @@
 <?php
 require_once("file.class.php");
 require_once("file.repository.php");
+require_once( "/lib/imagethumb/imagethumb.php");
 
 class ControllerUpload extends Upload
 {
@@ -9,8 +10,9 @@ class ControllerUpload extends Upload
 		//secure Extension is_array + type MIME
 		$extension = strtolower(strrchr($file['name'],'.'));
 
-		$file = new Upload($file, $_SESSION['userId']);
-		if(in_array($extension, $file->getExtension())){
+		$upload = new Upload();
+		$upload->Upload($file, $_SESSION['userId']);
+		if(in_array($extension, $upload->getExtension())){
 			return 1;
 		}
 		else
@@ -20,11 +22,23 @@ class ControllerUpload extends Upload
 	public function flushUpload(array $file)
 	{
 
-		$path = "bundle/upload/ressource/".$file['name'];
+		$time = time();
+		$path = "bundle/upload/ressource/".$time.$file['name'];
+		$pathMin = "bundle/upload/ressource/min/".$time.$file['name'];
 		$file['path'] = $path;
-		$newFile = new Upload($file, $_SESSION['userId']);
+		$file['pathMin'] = $pathMin;
+
+		$newFile = new Upload();
+		$newFile->Upload($file, $_SESSION['userId']);
+
 		FileRepository::flushUpload($newFile);
 
+		//TEST miniatures
+
+		$image_src  = $file['tmp_name'];
+		$image_dest = $pathMin;
+
+		imagethumb($image_src, $image_dest, 150);
 
 		if(move_uploaded_file($file['tmp_name'], $path))
 		{
@@ -32,6 +46,15 @@ class ControllerUpload extends Upload
 		}
 		else
 			return 0;
+	}
+
+	public function getAllMin()
+	{
+		$array = array();
+
+		$array = FileRepository::getAllMinInArray();
+		return $array;
+
 	}
 }
 ?>

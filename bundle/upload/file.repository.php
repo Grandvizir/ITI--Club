@@ -13,13 +13,41 @@ class FileRepository
 	public function flushUpload(Upload $file){
 
 		$bdd = FileRepository::getPdoConnexion();
-		$req = $bdd->prepare('INSERT INTO file(name, path, timeUpload, userId) VALUES(:name, :path, :timeUpload, :userId)');
+		$req = $bdd->prepare('INSERT INTO file(name, path, pathMin, timeUpload, userId) VALUES(:name, :path, :pathMin, :timeUpload, :userId)');
 		$req->execute(array(
 						'name' => $file->getName(),
 						'path' => $file->getPath(),
+						'pathMin' => $file->getPathMin(),
 						'timeUpload' => $file->getTimeUpload(),
 						'userId' => $file->getUserID()
 					));
+	}
+
+	public function getAllMinInArray(){
+		$bdd = FileRepository::getPdoConnexion();
+		$reponse = $bdd->query('SELECT * FROM file');
+		$array = array();
+		if($reponse)
+		{
+			while($donnees = $reponse->fetch())
+			{
+				$file = New Upload();
+
+
+
+				$file->setId($donnees['id']);
+				$file->setName($donnees['name']);
+
+				$file->setPathMin($donnees['pathMin']);
+
+				$file->setPath($donnees['path']);
+				$file->setTimeUpload($donnees['timeUpload']);
+				$file->setUserID($donnees['userId']);
+
+				array_push($array, $file);
+			}
+		}
+		return $array;
 	}
 }
 

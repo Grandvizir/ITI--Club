@@ -26,8 +26,6 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 		{
 			if(ControllerUpload::isSecureUpload($_FILES['upld']))
 			{
-				ControllerUpload::flushUpload($_FILES['upld']);
-				die;
 				if(ControllerUpload::flushUpload($_FILES['upld']) === 1){
 						header("location:/@/concours/");
 				}
@@ -36,9 +34,7 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 			}
 		}
 		else
-		{
-			die('error upload');
-		}
+			header("location:/@/concours/"); // TO-DO LOG + GESTION ERNO
 	}
 
 

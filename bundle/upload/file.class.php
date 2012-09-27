@@ -7,16 +7,26 @@
 		public $extension = array(".jpg",".jpeg",".png", ".c");
 		private $name;
 		private $path;
+		private $pathMin;
 		private $timeUpload;
 		private $userID;
+
+
+		function __construct()
+		{
+
+
+		}
+
 
 		function Upload(array $file, $userId)
 		{
 			$this->name = $file['name'];
-			if(!empty($file['path'])){
+			if(!empty($file['path']) || !empty($file['pathMin']))
+			{
 				$this->path = $file['path'];
+				$this->pathMin = $file['pathMin'];
 			}
-
 			$this->timeUpload = time();
 			$this->userID = $userId;
 		}
@@ -50,6 +60,14 @@
 
 		public function getPath(){
 			return $this->path;
+		}
+
+		public function getPathMin(){
+			return $this->pathMin;
+		}
+
+		public function setPathMin($pathMin){
+			$this->pathMin = $pathMin;
 		}
 
 		public function setPath($path){
