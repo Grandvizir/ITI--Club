@@ -15,6 +15,11 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 			case "home":
 				$path = "html/home.html.php";
 				break;
+			case "view":
+				$path = "html/view.html.php";
+				;
+				break;
+
 			default:
 				;
 		}
@@ -24,13 +29,14 @@ if(!empty($_GET['page']) && $_GET['page'] == "concours")
 	{
 		if($_FILES['upld']['error'] === 0)
 		{
-			if(ControllerUpload::isSecureUpload($_FILES['upld']))
+			if(ControllerUpload::isSecureUpload($_FILES['upld']) == 1)
 			{
-				if(ControllerUpload::flushUpload($_FILES['upld']) === 1){
-						header("location:/@/concours/");
-				}
-				else
-					header("location:/@/concours/");
+				ControllerUpload::flushUpload($_FILES['upld']);
+				header("location:/@/concours/");
+			}
+			else
+			{
+				header("location:/@/concours/"); // TO-DO LOG + GESTION ERNO
 			}
 		}
 		else

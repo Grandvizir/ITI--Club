@@ -22,7 +22,10 @@ RewriteRule @/administration/token/([a-z-A-Z0-9\-]+) index.php?page=administrati
 
 
 #UPLOAD
+RewriteRule @/concours/action/view/([0-9\-]+) index.php?page=concours&action=view&view=$1 [L]
 RewriteRule @/concours/action/([a-z-A-Z0-9\-]+) index.php?page=concours&action=$1 [L]
+
+
 #fin
 
 #PATTERN

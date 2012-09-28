@@ -2,7 +2,7 @@
 
 class Reader
 {
-	const connexionString = "mysql:host=localhost;dbname=test";
+	const connexionString = "mysql:host=localhost;dbname=bde";
 	const userName = "root";
 	const userPwd = "";
 

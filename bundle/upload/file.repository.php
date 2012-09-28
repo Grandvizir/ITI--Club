@@ -1,7 +1,7 @@
 <?php
 
 require_once("file.class.php");
-require_once("/bundle/Reader/Reader.class.php");
+require_once("bundle/Reader/Reader.class.php");
 
 class FileRepository extends Reader
 {
@@ -46,8 +46,28 @@ class FileRepository extends Reader
 
 				array_push($array, $file);
 			}
+			return $array;
 		}
-		return $array;
+
+	}
+
+	public function getImgById($id){
+		$bdd = FileRepository::getPdoConnexion();
+		$reponse = $bdd->prepare('SELECT * FROM file where id=:id');
+		$reponse->execute(array('id' => $id));
+		$donnees = $reponse->fetch();
+		if($donnees)
+		{
+			$file = New Upload();
+			$file->setName($donnees['name']);
+			$file->setPath($donnees['path']);
+			$file->setPathMin($donnees['pathMin']);
+			$file->setTimeUpload($donnees['timeUpload']);
+			$file->setUserId($donnees['userId']);
+			return $file;
+		}
+		else
+			return 0;
 	}
 }
 

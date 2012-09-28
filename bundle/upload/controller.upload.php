@@ -32,13 +32,13 @@ class ControllerUpload extends Upload
 		$newFile->Upload($file, $_SESSION['userId']);
 
 		FileRepository::flushUpload($newFile);
+			$image_src  = $file['tmp_name'];
+			$image_dest = $pathMin;
+			imagethumb($image_src, $image_dest, 150);
 
 		//TEST miniatures
 
-		$image_src  = $file['tmp_name'];
-		$image_dest = $pathMin;
 
-		imagethumb($image_src, $image_dest, 150);
 
 		if(move_uploaded_file($file['tmp_name'], $path))
 		{
